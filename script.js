@@ -45,57 +45,61 @@ console.log(patient2.getName());
 console.log(patient2.getSSN());
 
 // VERY HARD
-const person = {
-  name: "John",
-  job: "Full-stack Developer",
-  age: 27,
-  exercise: function (exercise) {
-    console.log(`${exercise} is fun!`);
-  },
-  fetchJob: function () {
-    console.log(`${this.name} is a ${this.job}.`);
-  },
-};
+function Person(name, job, age) {
+  (this.name = name),
+    (this.job = job),
+    (this.age = age),
+    (this.exercise = function (exercise) {
+      console.log(`${exercise} is fun!`);
+    }),
+    (this.fetchJob = function () {
+      console.log(`${this.name} is a ${this.job}.`);
+    });
+}
 
-const programmer = {
-  name: "John",
-  job: "Full-stack Developer",
-  age: 27,
-  languages: [],
-  busy: true,
-  completeTask: function () {
-    this.busy = false;
-  },
-  acceptNewTask: function () {
-    this.busy = true;
-  },
-  offerNewTask: function () {
-    if (busy) {
-      console.log(`${this.name} can't accept any new tasks right now.`);
-    } else
-      console.log(`${this.name} would love to take on a new responsibility.`);
-  },
-  learnLanguage: function (language) {
-    this.languages.push(language);
-  },
-  listLanguages: function () {
-    console.log(this.languages);
-  },
-};
+function Programmer(name, job, age, arr) {
+  (this.name = name),
+    (this.job = job),
+    (this.age = age),
+    (this.languages = arr),
+    (this.busy = true),
+    (this.completeTask = function () {
+      this.busy = false;
+    }),
+    (this.acceptNewTask = function () {
+      this.busy = true;
+    }),
+    (this.offerNewTask = function () {
+      if (this.busy === true) {
+        console.log(`${this.name} can't accept any new tasks right now.`);
+      } else {
+        console.log(`${this.name} would love to take on a new responsibility.`);
+      }
+    }),
+    (this.learnLanguage = function (language) {
+      this.languages.push(language);
+    }),
+    (this.listLanguages = function () {
+      return this.languages;
+    });
+}
 
-// const person1 = new Person("Harold", "Backend Engineer", 20);
-// const c1 = new Programmer("Liana", "DevOps", 35, ["HTML", "C#", "LUA"]);
-// const c2 = new Programmer("Edwin", "janitor", 55, ["HTML", "SASS”, ”Ruby"]);
-// const c3 = new Programmer("Manny", "SysOps", 31,[("HTML", "CSS", "JS", "R")]);
-// c1.learnLanguage("CSS");
-// c2.learnLanguage("C++");
-// c3.learnLanguage("JAVA");
-// console.log(c1.listLanguage());
-// console.log(c2.listLanguage());
-// console.log(c3.listLanguage());
-// console.log(person1);
-// console.log(c1);
-// console.log(c2);
-// console.log(c3);
-// person1.exercise();
-// person1.fetchJob();
+const person1 = new Person("Harold", "Backend Engineer", 20);
+const c1 = new Programmer("Liana", "DevOps", 35, ["HTML", "C#", "LUA"]);
+const c2 = new Programmer("Edwin", "janitor", 55, ["HTML", "SASS”, ”Ruby"]);
+const c3 = new Programmer("Manny", "SysOps", 31, ["HTML", "CSS", "JS", "R"]);
+c1.learnLanguage("CSS");
+c2.learnLanguage("C++");
+c3.learnLanguage("JAVA");
+console.log(c1.listLanguages());
+console.log(c2.listLanguages());
+console.log(c3.listLanguages());
+c1.acceptNewTask();
+c2.completeTask();
+c2.acceptNewTask();
+console.log(person1);
+console.log(c1);
+console.log(c2);
+console.log(c3);
+person1.exercise("Running");
+person1.fetchJob();
